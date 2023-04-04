@@ -1,0 +1,24 @@
+<table *ngIf="countries.length > 0"  class="animate__animated animate__fadeInUp table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Bandera</th>
+            <th> Nombre</th>
+            <th> Poblacion</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let country of countries; let indice = index">
+            <td>{{indice + 1}}</td>
+            <td>
+                <img src="{{country.flags.png}}" alt="" [ngStyle]="{'width':'50px'}">
+            </td>
+            <td>{{country.capital}} {{country.name.common}}</td>
+            <td>{{country.population | number}}</td>
+            <td>
+                <a matTooltip="Ver Detalle" [matTooltipPosition]="'above'" [routerLink]="['/pais',country.cca2]"  routerLinkActive="router-link-active" ><i class="bi bi-eye-fill"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
